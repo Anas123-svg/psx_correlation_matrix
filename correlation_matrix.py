@@ -33,7 +33,7 @@ fig.update_layout(
     autosize=False,
     height=1500,     
     width=1500,     
-    margin=dict(l=40, r=40, t=120, b=40), 
+    margin=dict(l=40, r=40, t=70, b=40), 
     font=dict(family="Arial", size=12),
 )
 
