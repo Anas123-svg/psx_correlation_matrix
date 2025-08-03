@@ -16,7 +16,8 @@ optimize_sqlite(conn)
 
 corr_scaled_data = pd.read_sql("SELECT * FROM correlation_matrix", conn, index_col='index')
 conn.close()
-corr_scaled_data = corr_scaled_data.iloc[:50, :50]  
+
+corr_scaled_data = corr_scaled_data.iloc[:50, :50]
 
 fig = px.imshow(
     corr_scaled_data,
@@ -30,34 +31,29 @@ fig = px.imshow(
 )
 
 fig.update_layout(
-    autosize=False,
-    height=1500,     
-    width=1500,     
-    margin=dict(l=40, r=40, t=70, b=40), 
+    autosize=True,
+    margin=dict(l=20, r=20, t=70, b=40),
     font=dict(family="Arial", size=12),
 )
 
 fig.update_traces(
-    textfont_size=6,
+    textfont_size=8,
     textfont_color="black",
     colorbar=dict(
-        orientation="h",        
-        thickness=10,           
+        orientation="h",
+        thickness=10,
         len=0.5,
-        y=0.8,                  
+        y=1.05,
         yanchor="bottom",
         x=0.5,
         xanchor="center",
-        tickfont=dict(size=8),
+        tickfont=dict(size=10),
         title=dict(
             text="Correlation",
             side="top",
-            font=dict(size=10)
+            font=dict(size=12)
         )
     )
 )
-
-
-
 
 st.plotly_chart(fig, use_container_width=True)
