@@ -14,14 +14,11 @@ def optimize_sqlite(conn):
 conn = sqlite3.connect("psx_data.db")
 optimize_sqlite(conn)
 
-# Load the full correlation matrix
 corr_scaled_data = pd.read_sql("SELECT * FROM correlation_matrix", conn, index_col='index')
 conn.close()
 
-# Limit to first 100 rows and columns
 corr_scaled_data = corr_scaled_data.iloc[:100, :100]
 
-# Plot
 fig = px.imshow(
     corr_scaled_data,
     labels=dict(x="Stocks", y="Stocks", color="Correlation"),
@@ -35,8 +32,8 @@ fig = px.imshow(
 
 fig.update_layout(
     autosize=True,
-    height=800,
-    width=1000,
+    height=2000,
+    width=2000,
     margin=dict(l=50, r=50, t=50, b=50)
 )
 
