@@ -4,14 +4,24 @@ import plotly.express as px
 import streamlit as st
 
 st.set_page_config(layout="wide")
-
 st.title("KSE-100 Stock Correlation Matrix")
 
-conn = sqlite3.connect("psx_data.db")
+def optimize_sqlite(conn):
+    conn.execute("PRAGMA cache_size = -10000")     
+    conn.execute("PRAGMA temp_store = MEMORY")     
+    conn.execute("PRAGMA journal_mode = OFF")      
 
+conn = sqlite3.connect("psx_data.db")
+optimize_sqlite(conn)
+
+# Load the full correlation matrix
 corr_scaled_data = pd.read_sql("SELECT * FROM correlation_matrix", conn, index_col='index')
 conn.close()
 
+# Limit to first 100 rows and columns
+corr_scaled_data = corr_scaled_data.iloc[:100, :100]
+
+# Plot
 fig = px.imshow(
     corr_scaled_data,
     labels=dict(x="Stocks", y="Stocks", color="Correlation"),
@@ -24,14 +34,20 @@ fig = px.imshow(
 )
 
 fig.update_layout(
-    width=3000,
-    height=3000,
-    autosize=False
+    autosize=True,
+    height=800,
+    width=1000,
+    margin=dict(l=50, r=50, t=50, b=50)
 )
 
 fig.update_traces(
-    textfont_size=6,
-    textfont_color="black"
+    textfont_size=8,
+    textfont_color="black",
+    colorbar=dict(
+        thickness=15,
+        len=0.8,
+        xpad=10
+    )
 )
 
 st.plotly_chart(fig, use_container_width=True)
