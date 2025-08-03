@@ -42,8 +42,8 @@ fig.update_traces(
     textfont_color="black",
     colorbar=dict(
         orientation="h",        # Horizontal bar
-        thickness=5,            # Thin height of colorbar
-        len=0.4,                # Short length (relative to full width)
+        thickness=10,            # Thin height of colorbar
+        len=0.01,                # Short length (relative to full width)
         y=1.1,                  # Push it above the matrix
         yanchor="bottom",
         x=0.5,
