@@ -21,11 +21,11 @@ corr_scaled_data = corr_scaled_data.iloc[:50, :50]
 num_rows = corr_scaled_data.shape[0]
 num_cols = corr_scaled_data.shape[1]
 
-screen_width = st.experimental_get_query_params().get("width", [1200])
-screen_width = int(screen_width[0]) if screen_width else 1200
+params = st.query_params
+screen_width = int(params.get("width", 1200)) if params.get("width") else 1200
 
 base_font_size = max(10, min(16, screen_width // 100))
-cell_size = max(20, min(40, screen_width // 40))  
+cell_size = max(20, min(40, screen_width // 40))
 
 fig_width = num_cols * cell_size
 fig_height = num_rows * cell_size
@@ -44,7 +44,7 @@ fig = px.imshow(
 fig.update_layout(
     autosize=False,
     width=fig_width,
-    height=fig_height + 100,  
+    height=fig_height + 100,
     margin=dict(l=20, r=20, t=60, b=40),
     font=dict(family="Arial", size=base_font_size),
 )
