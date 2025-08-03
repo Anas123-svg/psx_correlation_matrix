@@ -38,17 +38,20 @@ fig.update_layout(
 )
 
 fig.update_traces(
-    textfont_size=6, 
+    textfont_size=6,
     textfont_color="black",
     colorbar=dict(
-        thickness=7,
-        len=0.01,         
-        x=1.02,
-        xpad=10,
+        orientation="h",    
+        thickness=10,      
+        len=0.4,           
+        y=1.05,            
+        yanchor="bottom",
+        x=0.5,               
+        xanchor="center",
         tickfont=dict(size=10),
-        title_side="right"
-    ),
-    hovertemplate="%{x} vs %{y}<br>Correlation: %{z:.2f}<extra></extra>"
+        title_side="top"
+    )
 )
+
 
 st.plotly_chart(fig, use_container_width=True)
