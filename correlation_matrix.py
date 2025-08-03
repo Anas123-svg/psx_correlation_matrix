@@ -30,10 +30,10 @@ fig = px.imshow(
 )
 
 fig.update_layout(
-    autosize=True,
-    height=2000,     
-    width=2000,     
-    margin=dict(l=40, r=40, t=40, b=40),
+    autosize=False,
+    height=900,     
+    width=1000,     
+    margin=dict(l=40, r=40, t=120, b=40), 
     font=dict(family="Arial", size=12),
 )
 
@@ -41,10 +41,10 @@ fig.update_traces(
     textfont_size=6,
     textfont_color="black",
     colorbar=dict(
-        orientation="h",        # Horizontal bar
-        thickness=10,            # Thin height of colorbar
-        len=0.01,                # Short length (relative to full width)
-        y=1.1,                  # Push it above the matrix
+        orientation="h",        
+        thickness=10,           
+        len=0.5,                 # Half the width
+        y=1.08,                  # Adjust to sit just above the matrix
         yanchor="bottom",
         x=0.5,
         xanchor="center",
@@ -56,6 +56,7 @@ fig.update_traces(
         )
     )
 )
+
 
 
 
