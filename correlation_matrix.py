@@ -41,17 +41,22 @@ fig.update_traces(
     textfont_size=6,
     textfont_color="black",
     colorbar=dict(
-        orientation="h",    
-        thickness=10,      
-        len=0.4,           
-        y=1.05,            
+        orientation="h",        # Horizontal bar
+        thickness=5,            # Thin height of colorbar
+        len=0.4,                # Short length (relative to full width)
+        y=1.1,                  # Push it above the matrix
         yanchor="bottom",
-        x=0.5,               
+        x=0.5,
         xanchor="center",
-        tickfont=dict(size=10),
-        title_side="top"
+        tickfont=dict(size=8),
+        title=dict(
+            text="Correlation",
+            side="top",
+            font=dict(size=10)
+        )
     )
 )
+
 
 
 st.plotly_chart(fig, use_container_width=True)
