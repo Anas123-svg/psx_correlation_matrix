@@ -32,8 +32,8 @@ fig = px.imshow(
 
 fig.update_layout(
     autosize=True,
-    height=2000,
-    width=2000,
+    height=3000,
+    width=3000,
     margin=dict(l=50, r=50, t=50, b=50)
 )
 
@@ -42,7 +42,7 @@ fig.update_traces(
     textfont_color="black",
     colorbar=dict(
         thickness=15,
-        len=0.8,
+        len=0.18,
         xpad=10
     )
 )
