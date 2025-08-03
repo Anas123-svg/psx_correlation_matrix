@@ -1,6 +1,11 @@
 import sqlite3
 import pandas as pd
 import plotly.express as px
+import streamlit as st
+
+st.set_page_config(layout="wide")
+
+st.title("KSE-100 Stock Correlation Matrix")
 
 conn = sqlite3.connect("psx_data.db")
 
@@ -29,4 +34,4 @@ fig.update_traces(
     textfont_color="black"
 )
 
-fig.show()
+st.plotly_chart(fig, use_container_width=True)
