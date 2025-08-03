@@ -14,12 +14,10 @@ def optimize_sqlite(conn):
 conn = sqlite3.connect("psx_data.db")
 optimize_sqlite(conn)
 
-# Load data and limit for readability
 corr_scaled_data = pd.read_sql("SELECT * FROM correlation_matrix", conn, index_col='index')
 conn.close()
-corr_scaled_data = corr_scaled_data.iloc[:50, :50]  # 50x50 for bigger cells
+corr_scaled_data = corr_scaled_data.iloc[:70, :70]  
 
-# Plot heatmap
 fig = px.imshow(
     corr_scaled_data,
     labels=dict(x="Stocks", y="Stocks", color="Correlation"),
@@ -33,18 +31,18 @@ fig = px.imshow(
 
 fig.update_layout(
     autosize=True,
-    height=1200,     # controls vertical size (cell height)
-    width=1200,      # controls horizontal size (cell width)
+    height=1200,     
+    width=1200,     
     margin=dict(l=40, r=40, t=40, b=40),
     font=dict(family="Arial", size=12),
 )
 
 fig.update_traces(
-    textfont_size=10,
+    textfont_size=7, 
     textfont_color="black",
     colorbar=dict(
         thickness=12,
-        len=0.15,         # shorter vertical colorbar
+        len=0.15,         
         x=1.02,
         xpad=10,
         tickfont=dict(size=10),
