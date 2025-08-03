@@ -38,13 +38,13 @@ fig.update_layout(
 )
 
 fig.update_traces(
-    textfont_size=3,
+    textfont_size=6,
     textfont_color="black",
     colorbar=dict(
         orientation="h",        
         thickness=10,           
         len=0.5,
-        y=1.08,                  
+        y=0.8,                  
         yanchor="bottom",
         x=0.5,
         xanchor="center",
