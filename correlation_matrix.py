@@ -13,11 +13,22 @@ def optimize_sqlite(conn):
 
 conn = sqlite3.connect("psx_data.db")
 optimize_sqlite(conn)
-
 corr_scaled_data = pd.read_sql("SELECT * FROM correlation_matrix", conn, index_col='index')
 conn.close()
 
 corr_scaled_data = corr_scaled_data.iloc[:50, :50]
+
+num_rows = corr_scaled_data.shape[0]
+num_cols = corr_scaled_data.shape[1]
+
+screen_width = st.experimental_get_query_params().get("width", [1200])
+screen_width = int(screen_width[0]) if screen_width else 1200
+
+base_font_size = max(10, min(16, screen_width // 100))
+cell_size = max(20, min(40, screen_width // 40))  
+
+fig_width = num_cols * cell_size
+fig_height = num_rows * cell_size
 
 fig = px.imshow(
     corr_scaled_data,
@@ -31,27 +42,29 @@ fig = px.imshow(
 )
 
 fig.update_layout(
-    autosize=True,
-    margin=dict(l=20, r=20, t=70, b=40),
-    font=dict(family="Arial", size=12),
+    autosize=False,
+    width=fig_width,
+    height=fig_height + 100,  
+    margin=dict(l=20, r=20, t=60, b=40),
+    font=dict(family="Arial", size=base_font_size),
 )
 
 fig.update_traces(
-    textfont_size=8,
+    textfont_size=base_font_size,
     textfont_color="black",
     colorbar=dict(
         orientation="h",
         thickness=10,
-        len=0.5,
-        y=1.05,
+        len=0.6,
+        y=1.02,
         yanchor="bottom",
         x=0.5,
         xanchor="center",
-        tickfont=dict(size=10),
+        tickfont=dict(size=base_font_size),
         title=dict(
             text="Correlation",
             side="top",
-            font=dict(size=12)
+            font=dict(size=base_font_size + 2)
         )
     )
 )
