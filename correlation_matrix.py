@@ -41,7 +41,7 @@ fig.update_traces(
     textfont_size=6, 
     textfont_color="black",
     colorbar=dict(
-        thickness=10,
+        orientation="h",    
         thickness=7,
         len=0.1,         
         x=1.02,
