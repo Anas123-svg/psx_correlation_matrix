@@ -24,7 +24,7 @@ num_cols = corr_scaled_data.shape[1]
 params = st.query_params
 screen_width = int(params.get("width", 1200)) if params.get("width") else 1200
 
-base_font_size = max(2, min(6, screen_width // 180))
+base_font_size = max(1, min(2, screen_width // 200))
 cell_size = max(20, min(40, screen_width // 40))
 
 fig_width = num_cols * cell_size
