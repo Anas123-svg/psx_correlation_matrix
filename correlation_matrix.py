@@ -15,8 +15,8 @@ conn = sqlite3.connect("psx_data.db")
 optimize_sqlite(conn)
 corr_scaled_data = pd.read_sql("SELECT * FROM correlation_matrix", conn, index_col='index')
 conn.close()
-
-corr_scaled_data = corr_scaled_data.iloc[:50, :50]
+print(f"Loaded correlation matrix with shape: {corr_scaled_data.shape}")
+#corr_scaled_data = corr_scaled_data.iloc[:99, :99]
 
 num_rows = corr_scaled_data.shape[0]
 num_cols = corr_scaled_data.shape[1]
