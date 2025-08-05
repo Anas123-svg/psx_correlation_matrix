@@ -5,7 +5,9 @@ This project provides an interactive **correlation matrix heatmap** of stocks li
 The visualization is built using `Plotly` and deployed using `Streamlit`. It shows the degree of correlation between daily **closing prices** of top KSE-100 stocks based on historical data.
 
 ---
-URL: https://psxcorrelationmatrix-7pijj7zbriv6z8aebwgede.streamlit.app/
+[URL: https://psxcorrelationmatrix-7pijj7zbriv6z8aebwgede.streamlit.app/](https://psxcorrelationmatrix-jbhoipxvcdfbrgziwibh5s.streamlit.app/)
+<img width="918" height="893" alt="image" src="https://github.com/user-attachments/assets/cff309f8-97b6-4479-84bd-e395352003a1" />
+
 ## 🔍 What Is It?
 
 - A heatmap displaying **pairwise Pearson correlations** between stocks.
