@@ -48,10 +48,10 @@ fig.update_layout(
     margin=dict(l=20, r=20, t=60, b=40),
     font=dict(family="Arial", size=base_font_size),
     xaxis=dict(
-        tickfont=dict(size=base_font_size - 1),
+        tickfont=dict(size=base_font_size ),
     ),
     yaxis=dict(
-        tickfont=dict(size=base_font_size - 1),
+        tickfont=dict(size=base_font_size ),
     )
 )
 
